@@ -1,23 +1,20 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 
 export function Footer() {
   return (
     <footer className="bg-[#0a1e42] text-white/70 pt-16 pb-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+        <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d4a843] to-[#f0d48a] flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3L2 9L12 15L22 9L12 3Z" fill="#0f2a5c" />
-                  <path d="M2 9V17L12 23L22 17V9" stroke="#0f2a5c" strokeWidth="1.5" fill="none" />
-                  <path d="M12 15V23" stroke="#0f2a5c" strokeWidth="1.5" />
-                </svg>
-              </div>
-              <span className="text-white font-semibold tracking-wide">Bab-Ul-Ilm</span>
+            <div className="mb-6">
+              <span className="font-cormorant text-2xl font-bold tracking-tight text-white leading-none">
+                bab-ul<span className="text-[#d4a843]">-ilm</span>
+              </span>
             </div>
             <p className="text-sm font-light leading-relaxed text-white/50">
               The Gate of Knowledge — Pakistan&apos;s leading virtual school for quality education.
@@ -28,10 +25,10 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm font-light">
-              <li><a href="#why-us" className="hover:text-[#d4a843] transition-colors">Why Us</a></li>
-              <li><a href="#features" className="hover:text-[#d4a843] transition-colors">Features</a></li>
-              <li><a href="#about" className="hover:text-[#d4a843] transition-colors">About Us</a></li>
-              <li><a href="#chairman" className="hover:text-[#d4a843] transition-colors">Chairman Message</a></li>
+              <li><Link href="/#why-us" className="hover:text-[#d4a843] transition-colors">Why Us</Link></li>
+              <li><Link href="/#features" className="hover:text-[#d4a843] transition-colors">Features</Link></li>
+              <li><Link href="/#about" className="hover:text-[#d4a843] transition-colors">About Us</Link></li>
+              <li><Link href="/#chairman" className="hover:text-[#d4a843] transition-colors">Chairman Message</Link></li>
             </ul>
           </div>
 
@@ -42,7 +39,20 @@ export function Footer() {
               <li>Pre Classes (PG–KG)</li>
               <li>Primary (1st–5th)</li>
               <li>Middle Standard (6th–8th)</li>
-              <li>Pre-9th Prep</li>
+              <li>Pre-9th</li>
+              <li>Matric</li>
+              <li>Intermediate</li>
+            </ul>
+          </div>
+
+          {/* Courses */}
+          <div>
+            <h4 className="text-white font-semibold text-sm mb-4">Courses</h4>
+            <ul className="space-y-2.5 text-sm font-light">
+              <li>Graphic Designing</li>
+              <li>Web Designing</li>
+              <li>Web Development</li>
+              <li>Quran Learning</li>
             </ul>
           </div>
 

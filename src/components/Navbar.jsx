@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 
 export const Navbar = () => {
@@ -37,53 +38,52 @@ export const Navbar = () => {
         className="flex flex-col items-center pointer-events-auto"
       >
         <div
-          className={`flex w-full md:w-fit items-center justify-between md:justify-center gap-x-8 rounded-full px-6 md:px-7 py-3 text-sm font-medium shadow-xl transition-all duration-300 ${
+          className={`flex w-full md:w-fit items-center justify-between md:justify-center gap-x-6 rounded-full px-5 md:px-6 py-3 text-sm font-medium shadow-xl transition-all duration-300 ${
             scrolled
-              ? "bg-[#0f2a5c]/95 backdrop-blur-md text-white"
+              ? "bg-[#0f2a5c] text-white"
               : "bg-[#0f2a5c] text-white"
           }`}
         >
-          <Link href="/" className="flex items-center justify-center shrink-0 gap-2">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#d4a843] to-[#f0d48a] flex items-center justify-center">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3L2 9L12 15L22 9L12 3Z" fill="#0f2a5c" />
-                <path d="M2 9V17L12 23L22 17V9" stroke="#0f2a5c" strokeWidth="1.5" fill="none" />
-                <path d="M12 15V23" stroke="#0f2a5c" strokeWidth="1.5" />
-              </svg>
-            </div>
-            <span className="font-semibold tracking-wide text-sm hidden sm:inline">
-              Bab-Ul-Ilm
+          <Link href="/" className="flex items-center shrink-0">
+            <span className="font-cormorant text-lg md:text-xl font-bold tracking-tight text-white leading-none">
+              Bab-ul<span className="text-[#d4a843]">-Ilm</span>
             </span>
           </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-x-6 whitespace-nowrap">
             <Link
-              href="#why-us"
+              href="/#why-us"
               className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
             >
               Why Us
             </Link>
             <Link
-              href="#features"
+              href="/#features"
               className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
             >
               Features
             </Link>
             <Link
-              href="#about"
+              href="/#about"
               className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
             >
               About
             </Link>
             <Link
-              href="#chairman"
+              href="/#chairman"
               className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
             >
               Chairman
             </Link>
             <Link
-              href="#admissions"
+              href="/lms"
+              className="rounded-full border border-white/30 bg-white/5 px-5 py-1.5 font-medium tracking-wide transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
+            >
+              LMS Portal
+            </Link>
+            <Link
+              href="/apply"
               className="rounded-full bg-gradient-to-r from-[#d4a843] to-[#c49835] px-5 py-1.5 text-[#0f2a5c] font-semibold tracking-wide transition-all hover:shadow-lg hover:shadow-[#d4a843]/20 hover:scale-105 active:scale-95"
             >
               Apply Now
@@ -123,36 +123,43 @@ export const Navbar = () => {
           }`}
         >
           <Link
-            href="#why-us"
+            href="/#why-us"
             onClick={() => setIsOpen(false)}
             className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
           >
             Why Us
           </Link>
           <Link
-            href="#features"
+            href="/#features"
             onClick={() => setIsOpen(false)}
             className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
           >
             Features
           </Link>
           <Link
-            href="#about"
+            href="/#about"
             onClick={() => setIsOpen(false)}
             className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
           >
             About
           </Link>
           <Link
-            href="#chairman"
+            href="/#chairman"
             onClick={() => setIsOpen(false)}
             className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
           >
             Chairman
           </Link>
+          <Link
+            href="/lms"
+            onClick={() => setIsOpen(false)}
+            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
+          >
+            LMS Portal
+          </Link>
           <div className="px-4 py-3 w-full">
             <Link
-              href="#admissions"
+              href="/apply"
               onClick={() => setIsOpen(false)}
               className="block w-full text-center py-2.5 rounded-full bg-gradient-to-r from-[#d4a843] to-[#c49835] text-[#0f2a5c] font-semibold"
             >

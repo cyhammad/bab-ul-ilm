@@ -14,9 +14,8 @@
   --color-brand-warm: #faf6f0;
 }
 
-/* Smooth scroll */
+/* Smooth scroll handled by Lenis/ReactLenis */
 html {
-  scroll-behavior: smooth;
 }
 
 /* Custom animations */
@@ -52,12 +51,26 @@ html {
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* Glass effect */
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.6s ease-out both;
+}
+
+/* Professional Card Style */
+.card-professional {
+  background: #ffffff;
+  border: 1px solid rgba(15, 42, 92, 0.1);
+  box-shadow: 0 4px 20px -4px rgba(15, 42, 92, 0.05);
 }
 
 /* Gradient text */
@@ -66,4 +79,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Text balance for paragraphs */
+p, blockquote, .text-balanced {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }

@@ -50,7 +50,7 @@ const pillars = [
 
 export function WhyBabulIlm() {
   return (
-    <section id="why-us" className="relative py-24 md:py-32 bg-white overflow-hidden">
+    <section id="why-us" className="relative py-24 md:py-32 bg-white overflow-hidden scroll-mt-20">
       {/* Subtle background pattern */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#0f2a5c]/[0.02] rounded-full blur-[100px]" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d4a843]/[0.03] rounded-full blur-[100px]" />
@@ -94,19 +94,22 @@ export function WhyBabulIlm() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="mb-16"
         >
-          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl">
-            <Image
-              src="/images/3.png"
-              alt="Why Bab-Ul-Ilm - Three Core Pillars"
-              width={1400}
-              height={700}
-              className="w-full h-auto object-cover"
-            />
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl border border-[#0f2a5c]/5 group">
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/3.png"
+                alt="Why Bab-Ul-Ilm - Three Core Pillars"
+                width={1400}
+                height={700}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f2a5c]/40 to-transparent" />
           </div>
         </motion.div>
 
         {/* Three Pillars Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
           {pillars.map((pillar, i) => (
             <motion.div
               key={i}
@@ -118,22 +121,56 @@ export function WhyBabulIlm() {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.1 * i,
               }}
-              className={`group relative rounded-2xl border ${pillar.borderColor} bg-gradient-to-b ${pillar.color} p-7 sm:p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1`}
+              className={`group relative rounded-2xl border ${pillar.borderColor} bg-gradient-to-b ${pillar.color} p-7 sm:p-8 transition-all duration-500 hover:shadow-lg hover:shadow-[#0f2a5c]/5 hover:-translate-y-1 block h-full`}
             >
               <div
-                className={`w-14 h-14 rounded-xl ${pillar.iconBg} ${pillar.iconColor} flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-110`}
+                className={`w-14 h-14 rounded-xl ${pillar.iconBg} ${pillar.iconColor} flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 shadow-sm`}
               >
                 {pillar.icon}
               </div>
-              <h3 className="text-lg font-semibold text-[#0f2a5c] mb-3">
+              <h3 className="text-xl font-semibold text-[#0f2a5c] mb-4 tracking-tight">
                 {pillar.heading}
               </h3>
-              <p className="text-sm text-stone-500 leading-relaxed font-light">
+              <p className="text-[15px] text-stone-500 leading-relaxed font-light text-balanced">
                 {pillar.subheading}
               </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Curriculum Highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-3xl bg-[#0f2a5c] p-8 md:p-14 text-center shadow-2xl relative overflow-hidden group"
+        >
+          {/* Decorative Glow */}
+          <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#d4a843]/[0.05] rounded-full blur-[120px] transition-all duration-700 group-hover:scale-110" />
+          
+          <div className="relative z-10">
+            <h3 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-10 tracking-tight">
+              Curriculum Specialists
+            </h3>
+            <div className="grid sm:grid-cols-3 gap-8 md:gap-14">
+              <div className="space-y-4">
+                <div className="text-[#d4a843] font-cormorant font-bold text-2xl lg:text-3xl italic tracking-wide">Oxford</div>
+                <div className="w-8 h-[1px] bg-white/20 mx-auto" />
+                <p className="text-[10px] text-white/50 uppercase tracking-[0.25em] font-medium leading-relaxed">International<br/>Syllabus</p>
+              </div>
+              <div className="sm:border-x border-white/10 space-y-4">
+                <div className="text-[#d4a843] font-cormorant font-bold text-2xl lg:text-3xl italic tracking-wide">Punjab Board</div>
+                <div className="w-8 h-[1px] bg-white/20 mx-auto" />
+                <p className="text-[10px] text-white/50 uppercase tracking-[0.25em] font-medium leading-relaxed">Local Excellence<br/>(PECTA)</p>
+              </div>
+              <div className="space-y-4">
+                <div className="text-[#d4a843] font-cormorant font-bold text-2xl lg:text-3xl italic tracking-wide">Combine Mix</div>
+                <div className="w-8 h-[1px] bg-white/20 mx-auto" />
+                <p className="text-[10px] text-white/50 uppercase tracking-[0.25em] font-medium leading-relaxed">Hybrid Learning<br/>Experience</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
