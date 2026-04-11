@@ -4,14 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const slides = [
-  { image: "/images/1.png", tagline: "Home Based Learning System" },
-  { image: "/images/2.png", tagline: "Elevating Excellence" },
-  { image: "/images/3.png", tagline: "Future of Learning is Here" },
-  { image: "/images/4.jpg", tagline: "World Class Schooling Right at Home" },
-  { image: "/images/5.jpg", tagline: "STEM Integrated Curriculum" },
-  { image: "/images/6.jpg", tagline: "Interactive Model LMS" },
-  { image: "/images/7.jpeg", tagline: "Affordable and Flexible" },
-  { image: "/images/8.jpeg", tagline: "More Than Just Academic Learning" },
+  { image: "/carousel-images/c1.jpg", tagline: "Home Based Learning System" },
+  { image: "/carousel-images/c2.jpg", tagline: "Elevating Excellence" },
+  { image: "/carousel-images/c3.jpg", tagline: "Future of Learning is Here" },
+  { image: "/carousel-images/c4.jpg", tagline: "World Class Schooling Right at Home" },
+  { image: "/carousel-images/c5.jpg", tagline: "STEM Integrated Curriculum" },
+  { image: "/carousel-images/c6.jpg", tagline: "Interactive Model LMS" },
+  { image: "/carousel-images/c7.jpg", tagline: "Affordable and Flexible" },
+  { image: "/carousel-images/c8.jpg", tagline: "More Than Just Academic Learning" },
 ];
 
 export function HeroCarousel() {

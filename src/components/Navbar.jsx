@@ -45,9 +45,14 @@ export const Navbar = () => {
           }`}
         >
           <Link href="/" className="flex items-center shrink-0">
-            <span className="font-cormorant text-lg md:text-xl font-bold tracking-tight text-white leading-none">
-              Bab-ul<span className="text-[#d4a843]">-Ilm</span>
-            </span>
+            <Image 
+              src="/logos/Transparent.png" 
+              alt="Bab-Ul-Ilm Logo" 
+              width={168} 
+              height={48} 
+              className="h-11 w-auto object-contain brightness-0 invert" 
+              priority
+            />
           </Link>
 
           {/* Desktop Links */}

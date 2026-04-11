@@ -12,9 +12,13 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
             <div className="mb-6">
-              <span className="font-cormorant text-2xl font-bold tracking-tight text-white leading-none">
-                bab-ul<span className="text-[#d4a843]">-ilm</span>
-              </span>
+              <Image 
+                src="/logos/Transparent.png" 
+                alt="Bab-Ul-Ilm Logo" 
+                width={240} 
+                height={80} 
+                className="h-20 w-auto object-contain brightness-0 invert" 
+              />
             </div>
             <p className="text-sm font-light leading-relaxed text-white/50">
               The Gate of Knowledge — Pakistan&apos;s leading virtual school for quality education.

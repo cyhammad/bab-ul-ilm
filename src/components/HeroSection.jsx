@@ -12,7 +12,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
           <Image
-            src="/images/2.png"
+            src="/carousel-images/c1.jpg"
             alt="Campus Background"
             fill
             priority
