@@ -5,9 +5,9 @@ import { motion } from "motion/react";
 
 export function AdmissionsCTA() {
   return (
-    <section id="admissions" className="relative py-24 md:py-32 bg-[#0f2a4c] overflow-hidden scroll-mt-20 border-t border-white/5">
+    <section id="admissions" className="relative py-16 md:py-24 bg-[#0f2a4c] overflow-hidden scroll-mt-20 border-t border-white/5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24 items-center">
           
           {/* Left - Content */}
           <div className="text-white">
