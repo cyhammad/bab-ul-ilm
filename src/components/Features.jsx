@@ -82,7 +82,7 @@ export function Features() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={`flex flex-col ${
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } items-center gap-6 md:gap-12`}
+              } items-center gap-6 md:gap-8 lg:gap-12 transition-all duration-300`}
             >
               {/* Image */}
               <div className="w-full md:w-1/2">
