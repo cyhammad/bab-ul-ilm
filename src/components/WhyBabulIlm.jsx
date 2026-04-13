@@ -94,16 +94,14 @@ export function WhyBabulIlm() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="mb-16"
         >
-          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl border border-[#0f2a5c]/5 group">
-            <div className="relative w-full h-full">
-              <Image
-                src="/images/3.png"
-                alt="Why Bab-Ul-Ilm - Three Core Pillars"
-                width={1400}
-                height={700}
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl border border-[#0f2a5c]/5 group aspect-[21/9]">
+            <Image
+              src="/images/3.png"
+              alt="Why Bab-Ul-Ilm - Three Core Pillars"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.15] scale-[1.1]"
+              sizes="100vw"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f2a5c]/40 to-transparent" />
           </div>
         </motion.div>

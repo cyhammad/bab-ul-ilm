@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
 
 export function AdmissionsCTA() {
@@ -28,21 +29,21 @@ export function AdmissionsCTA() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-14">
-              <a
-                href="#"
+              <Link
+                href="/apply"
                 className="inline-flex items-center justify-center h-14 px-10 rounded-xl bg-[#d4a843] hover:bg-[#c49835] text-[#0f2a4c] font-bold tracking-wide transition-all shadow-xl shadow-black/20"
               >
                 Start Application
                 <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H3.75" />
                 </svg>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/#fees"
                 className="inline-flex items-center justify-center h-14 px-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold tracking-wide transition-all"
               >
                 View Fees
-              </a>
+              </Link>
             </div>
 
             {/* Quick Stats Grid */}

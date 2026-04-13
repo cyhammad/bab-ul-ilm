@@ -56,7 +56,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="relative py-24 md:py-32 bg-[#faf8f5] overflow-hidden scroll-mt-20 border-t border-stone-100">
+    <section id="features" className="relative py-16 md:py-24 bg-[#faf8f5] overflow-hidden scroll-mt-20 border-t border-stone-100">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         {/* Section Header */}
         <div
@@ -82,7 +82,7 @@ export function Features() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className={`flex flex-col ${
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              } items-center gap-8 md:gap-14`}
+              } items-center gap-6 md:gap-12`}
             >
               {/* Image */}
               <div className="w-full md:w-1/2">
@@ -92,7 +92,7 @@ export function Features() {
                       src={feature.image}
                       alt={feature.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.18] scale-[1.12]"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>

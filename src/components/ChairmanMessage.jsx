@@ -23,6 +23,7 @@ export function ChairmanMessage() {
                 alt="Tauqeer Ahmed Hanjra - Chairman"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f2a5c]/40 via-transparent to-transparent" />
             </div>

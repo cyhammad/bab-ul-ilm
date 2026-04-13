@@ -22,6 +22,8 @@ export default function LMSPage() {
               alt="Bab-Ul-Ilm Logo" 
               fill 
               className="object-contain" 
+              sizes="340px"
+              priority
             />
           </div>
           

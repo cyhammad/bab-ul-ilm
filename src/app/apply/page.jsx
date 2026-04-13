@@ -28,9 +28,9 @@ export default function ApplyPage() {
       <div className="w-full max-w-4xl relative z-10">
         {/* Branding Header */}
         <div className="text-center mb-10 md:mb-16">
-          <div className="relative w-[200px] md:w-[300px] h-[70px] md:h-[100px] mx-auto mb-6 md:mb-8">
+          <div className="relative w-[280px] md:w-[400px] h-[100px] md:h-[140px] mx-auto mb-6 md:mb-8">
             <Image 
-              src="/logos/logo.png" 
+              src="/logos/Transparent.png" 
               alt="Bab-Ul-Ilm Logo" 
               fill 
               className="object-contain" 

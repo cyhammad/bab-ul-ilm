@@ -7,23 +7,32 @@ const slides = [
   { image: "/carousel-images/c1.jpg", tagline: "Home Based Learning System" },
   { image: "/carousel-images/c2.jpg", tagline: "Elevating Excellence" },
   { image: "/carousel-images/c3.jpg", tagline: "Future of Learning is Here" },
-  { image: "/carousel-images/c4.jpg", tagline: "World Class Schooling Right at Home" },
+  {
+    image: "/carousel-images/c4.jpg",
+    tagline: "World Class Schooling Right at Home",
+  },
   { image: "/carousel-images/c5.jpg", tagline: "STEM Integrated Curriculum" },
   { image: "/carousel-images/c6.jpg", tagline: "Interactive Model LMS" },
   { image: "/carousel-images/c7.jpg", tagline: "Affordable and Flexible" },
-  { image: "/carousel-images/c8.jpg", tagline: "More Than Just Academic Learning" },
+  {
+    image: "/carousel-images/c8.jpg",
+    tagline: "More Than Just Academic Learning",
+  },
 ];
 
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const goTo = useCallback((idx) => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrent(idx);
-    setTimeout(() => setIsTransitioning(false), 800);
-  }, [isTransitioning]);
+  const goTo = useCallback(
+    (idx) => {
+      if (isTransitioning) return;
+      setIsTransitioning(true);
+      setCurrent(idx);
+      setTimeout(() => setIsTransitioning(false), 800);
+    },
+    [isTransitioning],
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -39,7 +48,6 @@ export function HeroCarousel() {
     <div className="relative w-full max-w-6xl mx-auto select-none text-balanced">
       {/* Carousel Container */}
       <div className="relative flex items-center justify-center h-[240px] sm:h-[300px] md:h-[380px] lg:h-[420px]">
-
         {/* Left Side Card */}
         <div
           className="absolute left-0 lg:left-4 w-[160px] sm:w-[200px] md:w-[280px] lg:w-[320px] h-[180px] sm:h-[220px] md:h-[280px] lg:h-[310px] rounded-2xl overflow-hidden transition-all duration-700 ease-out cursor-pointer hidden sm:block"
@@ -84,17 +92,7 @@ export function HeroCarousel() {
           ))}
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F2A5C]/70 via-transparent to-[#0F2A5C]/10 z-10" />
-
-          {/* Tagline */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 p-5 md:p-7">
-            <div key={current} className="text-center animate-fadeSlideUp">
-              <p className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide leading-snug drop-shadow-lg">
-                {slides[current].tagline}
-              </p>
-              <div className="mt-3 mx-auto w-10 h-[3px] rounded-full bg-[#D4A843]" />
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F2A5C]/40 via-transparent to-[#0F2A5C]/5 z-10" />
         </div>
 
         {/* Right Side Card */}

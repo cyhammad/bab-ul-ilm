@@ -2,11 +2,40 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
+
+const NAV_LINKS = [
+  {
+    name: "About",
+    href: "/#about",
+    submenu: [
+      { name: "Our Vision", href: "/#about" },
+      { name: "Chairman's Message", href: "/#message" },
+      { name: "Why Bab-Ul-Ilm", href: "/#why-us" },
+    ],
+  },
+  {
+    name: "Fees",
+    href: "/#fees",
+    submenu: [
+      { name: "Fee Structure", href: "/#fees" },
+      { name: "Special Offers", href: "/#fees" },
+    ],
+  },
+  {
+    name: "Syllabus",
+    href: "/#course-features",
+    submenu: [
+      { name: "Course Features", href: "/#course-features" },
+      { name: "STEM Learning", href: "/#features" },
+      { name: "Faculty Recruitment", href: "/#faculty" },
+    ],
+  },
+];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -14,9 +43,7 @@ export const Navbar = () => {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
     if (previous === undefined) return;
-
     setScrolled(latest > 50);
-
     if (latest > previous && latest > 150) {
       setHidden(true);
       if (isOpen) setIsOpen(false);
@@ -38,61 +65,59 @@ export const Navbar = () => {
         className="flex flex-col items-center pointer-events-auto"
       >
         <div
-          className={`flex w-full md:w-fit items-center justify-between md:justify-center gap-x-6 rounded-full px-5 md:px-6 py-3 text-sm font-medium shadow-xl transition-all duration-300 ${
-            scrolled
-              ? "bg-[#0f2a5c] text-white"
-              : "bg-[#0f2a5c] text-white"
-          }`}
+          className={`flex w-full md:w-fit items-center justify-between md:justify-center gap-x-6 rounded-full px-5 md:px-6 py-3 text-sm font-medium shadow-xl transition-all duration-300 bg-[#0f2a5c] text-white`}
         >
           <Link href="/" className="flex items-center shrink-0">
-            <Image 
-              src="/logos/Transparent.png" 
-              alt="Bab-Ul-Ilm Logo" 
-              width={168} 
-              height={48} 
-              className="h-11 w-auto object-contain brightness-0 invert" 
-              priority
-            />
+            <span className="font-cormorant text-2xl font-bold tracking-tight text-white italic">
+              Bab-Ul-Ilm
+            </span>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-x-6 whitespace-nowrap">
-            <Link
-              href="/#why-us"
-              className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
-            >
-              Why Us
-            </Link>
-            <Link
-              href="/#features"
-              className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
-            >
-              Features
-            </Link>
-            <Link
-              href="/#about"
-              className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/#chairman"
-              className="hover:text-[#d4a843] font-light tracking-wide transition-colors"
-            >
-              Chairman
-            </Link>
-            <Link
-              href="/lms"
-              className="rounded-full border border-white/30 bg-white/5 px-5 py-1.5 font-medium tracking-wide transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
-            >
-              LMS Portal
-            </Link>
-            <Link
-              href="/apply"
-              className="rounded-full bg-gradient-to-r from-[#d4a843] to-[#c49835] px-5 py-1.5 text-[#0f2a5c] font-semibold tracking-wide transition-all hover:shadow-lg hover:shadow-[#d4a843]/20 hover:scale-105 active:scale-95"
-            >
-              Apply Now
-            </Link>
+          {/* Desktop Links with Dropdowns */}
+          <div className="hidden md:flex items-center gap-x-1 whitespace-nowrap h-full">
+            {NAV_LINKS.map((link) => (
+              <div 
+                key={link.name} 
+                className="relative h-full px-4"
+                onMouseEnter={() => setActiveDropdown(link.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1.5 hover:text-[#d4a843] font-light tracking-wide transition-colors text-[15px] py-2"
+                >
+                  {link.name}
+                  <svg 
+                    className={`w-3 h-3 transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} 
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </Link>
+
+                <AnimatePresence>
+                  {activeDropdown === link.name && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-52 bg-[#0f2a5c] border border-white/10 rounded-2xl shadow-2xl py-2 overflow-hidden"
+                    >
+                      {link.submenu.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="block px-5 py-3 text-[13px] font-light text-white/70 hover:text-white hover:bg-white/5 transition-all"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
           </div>
 
           {/* Mobile Hamburger Toggle */}
@@ -101,77 +126,34 @@ export const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <span
-              className={`block w-5 h-[2px] bg-white rounded-full transition-transform duration-300 ease-in-out ${
-                isOpen ? "rotate-45 translate-y-[8px]" : ""
-              }`}
-            ></span>
-            <span
-              className={`block w-5 h-[2px] bg-white rounded-full transition-opacity duration-300 ease-in-out ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            ></span>
-            <span
-              className={`block w-5 h-[2px] bg-white rounded-full transition-transform duration-300 ease-in-out ${
-                isOpen ? "-rotate-45 -translate-y-[8px]" : ""
-              }`}
-            ></span>
+            <span className={`block w-5 h-[2px] bg-white rounded-full transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-[8px]" : ""}`}></span>
+            <span className={`block w-5 h-[2px] bg-white rounded-full transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}></span>
+            <span className={`block w-5 h-[2px] bg-white rounded-full transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-[8px]" : ""}`}></span>
           </button>
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        <div
-          className={`md:hidden flex flex-col items-center w-full bg-[#0f2a5c] rounded-2xl mt-2 overflow-hidden transition-all duration-300 ease-in-out font-light tracking-wide shadow-2xl ${
-            isOpen
-              ? "max-h-80 py-2 border border-white/10 opacity-100"
-              : "max-h-0 py-0 border-transparent opacity-0"
-          }`}
-        >
-          <Link
-            href="/#why-us"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
-          >
-            Why Us
-          </Link>
-          <Link
-            href="/#features"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
-          >
-            Features
-          </Link>
-          <Link
-            href="/#about"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/#chairman"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
-          >
-            Chairman
-          </Link>
-          <Link
-            href="/lms"
-            onClick={() => setIsOpen(false)}
-            className="w-full text-center py-3 text-white/80 hover:text-[#d4a843] hover:bg-white/5 transition-colors"
-          >
-            LMS Portal
-          </Link>
-          <div className="px-4 py-3 w-full">
-            <Link
-              href="/apply"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-center py-2.5 rounded-full bg-gradient-to-r from-[#d4a843] to-[#c49835] text-[#0f2a5c] font-semibold"
+        {/* Mobile menu logic fixed to include submenus if needed, but keeping it simple as per user preference for "About, Fees, Syllabus" */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden flex flex-col items-center w-full bg-[#0f2a5c] rounded-2xl mt-2 overflow-hidden font-light tracking-wide shadow-2xl border border-white/10"
             >
-              Apply Now
-            </Link>
-          </div>
-        </div>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-center py-4 text-white hover:text-[#d4a843] hover:bg-white/5 transition-colors border-b border-white/5 last:border-0"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
     </div>
   );

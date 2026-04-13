@@ -20,7 +20,7 @@ const edgeItems = [
 
 export function AboutUs() {
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-[#0F2A5C] scroll-mt-20">
+    <section id="about" className="relative py-16 md:py-24 bg-[#0F2A5C] scroll-mt-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         
         {/* Top: Header + Intro */}
@@ -71,7 +71,7 @@ export function AboutUs() {
                 src="/images/2.png"
                 alt="Our Vision"
                 fill
-                className="object-cover"
+                className="object-cover scale-[1.12]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0f2a5c]/50 via-transparent to-transparent" />
@@ -82,7 +82,8 @@ export function AboutUs() {
                 src="/images/3.jpg"
                 alt="Students learning"
                 fill
-                className="object-cover"
+                className="object-cover scale-[1.12]"
+                sizes="140px"
               />
             </div>
           </motion.div>
